@@ -9,7 +9,7 @@ export default observer(() => {
 
   return (
     <>
-      <NewTodoInput addTodo={todosStore.addTodo} />
+      <NewTodoInput />
       <hr />
       <ul>
         {todosStore.todos.map((todo) => (

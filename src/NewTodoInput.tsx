@@ -1,19 +1,16 @@
 import React from "react";
-import { TodosStore } from "./TodosStore";
+import { useRootStore } from "./RootStateContext";
 
-type NewTodoInputProps = {
-  addTodo: TodosStore["addTodo"];
-};
-
-export const NewTodoInput: React.FC<NewTodoInputProps> = ({ addTodo }) => {
-  const [todo, setTodo] = React.useState("");
+export const NewTodoInput = () => {
+  const [todo, setTodo] = React.useState("")
+  const { todosStore } = useRootStore()
 
   const updateTodo = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value)
   }
 
   const onAddTodoClick = () => {
-    addTodo(todo)
+    todosStore.addTodo(todo)
     setTodo('')
   }
 
